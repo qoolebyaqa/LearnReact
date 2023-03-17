@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.header__list {
+  list-style-type: none;
+  transform: scale(1.1);
+}
+.header__link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.header__link:hover {
+  color: rgb(232, 218, 232);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
