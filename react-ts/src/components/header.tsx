@@ -7,7 +7,7 @@ class HeaderClass extends React.Component {
   }
   render(): React.ReactNode {
     return (
-      <header>
+      <header className="header__wrapper">
         <li className="header__list">
           <Link to="/" className="header__link">
             Home
