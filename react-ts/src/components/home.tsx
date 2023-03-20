@@ -1,5 +1,6 @@
 import React from 'react';
 import PetClass from './card';
+import HeaderClass from './header';
 import SearchClass from './searchbar';
 
 class HomeClass extends React.Component {
@@ -9,6 +10,7 @@ class HomeClass extends React.Component {
   render(): React.ReactNode {
     return (
       <div className="home__wrapper">
+        <HeaderClass />
         <h2>Home</h2>
         <SearchClass />
         <PetClass />

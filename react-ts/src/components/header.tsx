@@ -9,12 +9,15 @@ class HeaderClass extends React.Component {
     return (
       <header className="header__wrapper">
         <li className="header__list">
-          <Link to="/" className="header__link">
+          <Link to="/" className={window.location.pathname === '/' ? 'active' : 'header__link'}>
             Home
           </Link>
         </li>
         <li className="header__list">
-          <Link to="/about" className="header__link">
+          <Link
+            to="/about"
+            className={window.location.pathname === '/about' ? 'active' : 'header__link'}
+          >
             About Us
           </Link>
         </li>

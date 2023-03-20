@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       {
         <BrowserRouter>
-          <HeaderClass />
           <Routes>
             <Route path="/" element={<HomeClass />} />
             <Route path="/about" element={<AboutClass />} />
