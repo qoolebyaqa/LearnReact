@@ -22,7 +22,10 @@ class SearchClass extends React.Component<{}, { value: string }> {
     }));
   }
   toLocal() {
-    localStorage.setItem('searched', this.state.value);
+    localStorage.removeItem('searched');
+    this.setState(() => ({
+      value: '',
+    }));
   }
   render(): React.ReactNode {
     return (
@@ -31,11 +34,14 @@ class SearchClass extends React.Component<{}, { value: string }> {
         <div className="search__input-wrap">
           <input className="search__input" value={this.state.value} onChange={this.ChangeInput} />
           <button className="search__button" type="submit" onClick={this.toLocal}>
-            Save To Storage
+            Remove From Storage
           </button>
         </div>
       </div>
     );
+  }
+  componentWillUnmount() {
+    localStorage.setItem('searched', this.state.value);
   }
 }
 export default SearchClass;

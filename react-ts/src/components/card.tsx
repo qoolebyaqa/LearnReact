@@ -1,30 +1,27 @@
 import React from 'react';
 import { Ipet, petsArr } from './PetsArr';
 
-const arrPet: Ipet[] = petsArr;
-
 class PetClass extends React.Component {
   constructor(prop: string) {
     super(prop);
   }
   render(): React.ReactNode {
+    const arrPet: Ipet[] = petsArr;
     return (
-      <div className="card__wrapper">
-        <img src={arrPet[0].img} alt="" />
-        {/* <ul>
-          {arrPet.map((value) => {
-            return (
-              <li>
-                <p>{value.name}</p>
-                <p>{value.type}</p>
-                <p>{value.breed}</p>
-                <p>{value.age}</p>
-                <img src={value.img} alt="as" />
-                <p>{value.description}</p>
-              </li>
-            )})}
-        </ul> */}
-      </div>
+      <ul className="pet__container">
+        {arrPet.map((a: Ipet, index: number) => {
+          return (
+            <li className="pet__card" key={index}>
+              <p className="pet__name">{a.name}</p>
+              <p className="pet__p">{a.type}</p>
+              <p className="pet__p">{a.breed}</p>
+              <p className="pet__p">{a.age}</p>
+              <img src={a.img} alt="animal" />
+              <p className="pet__p">{a.description}</p>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }

@@ -1,12 +1,13 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .header__wrapper {
   display: flex;
   justify-content: center;
   gap: 100px;
-  margin: 0 auto;
   background-color: #282c34;
 }
 .header__list {
@@ -54,6 +55,31 @@
 .search__button:hover {
   background-color: rgb(33, 143, 90);
   transform: scale(1.1);
+}
+.pet__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.pet__card {
+  max-width: 300px;
+  list-style-type: none;
+  border: 1px solid #0a0d51;
+  display: flex;
+  flex-direction: column;
+  justify-self: center; 
+  align-items: center; 
+}
+.pet__name {
+  width: 30%;
+}
+.pet__name:hover {
+  border-bottom: 1px solid #0a0d51;
+  cursor: pointer;
+}
+.pet__p {
+  margin: 0 auto;
 }
 
 @keyframes App-logo-spin {

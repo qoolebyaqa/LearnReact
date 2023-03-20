@@ -1,11 +1,11 @@
 import Jennifer from '../assets/pets_jennifer.png';
-import Sophia from '../assets/pets_jennifer.png';
-import Woody from '../assets/pets_jennifer.png';
-import Scarlett from '../assets/pets_jennifer.png';
-import Katrine from '../assets/pets_jennifer.png';
-import Timmy from '../assets/pets_jennifer.png';
-import Freddie from '../assets/pets_jennifer.png';
-import Charly from '../assets/pets_jennifer.png';
+import Sophia from '../assets/pets-sophia.png';
+import Woody from '../assets/pets_woody.png';
+import Scarlett from '../assets/pets-scarlet.png';
+import Katrine from '../assets/pets_katrine.png';
+import Timmy from '../assets/pets-timmy.png';
+import Freddie from '../assets/pets-freddie.png';
+import Charly from '../assets/pets-charly.png';
 
 export const petsArr: Ipet[] = [
   {
