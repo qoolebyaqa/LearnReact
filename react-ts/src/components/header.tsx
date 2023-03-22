@@ -21,6 +21,14 @@ class HeaderClass extends React.Component {
             About Us
           </Link>
         </li>
+        <li className="header__list">
+          <Link
+            to="/form"
+            className={window.location.pathname === '/form' ? 'active' : 'header__link'}
+          >
+            Form
+          </Link>
+        </li>
       </header>
     );
   }
