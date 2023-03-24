@@ -86,6 +86,14 @@
 .pet__p {
   margin: 0 auto;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  align-items: center;
+  margin: 0 auto;
+}
 
 @keyframes App-logo-spin {
   from {
