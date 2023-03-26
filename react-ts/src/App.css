@@ -89,10 +89,13 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   width: 500px;
   align-items: center;
   margin: 0 auto;
+}
+.radio__container {
+  display: flex;
 }
 
 @keyframes App-logo-spin {
