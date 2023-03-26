@@ -97,6 +97,18 @@
 .radio__container {
   display: flex;
 }
+.ipnut__card {
+  border: 2px solid greenyellow;
+  width: 250px;
+  list-style-type: none;
+}
+.ipnut__card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 3px auto;
+}
 
 @keyframes App-logo-spin {
   from {

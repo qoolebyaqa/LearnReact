@@ -4,5 +4,6 @@ export interface Iformvalues {
   doing: string | undefined;
   place: string | undefined;
   advice: string | undefined;
-  result: string | undefined;
+  result?: string | undefined;
+  person: string | undefined;
 }

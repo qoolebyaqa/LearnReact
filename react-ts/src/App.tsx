@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeClass />} />
             <Route path="/about" element={<AboutClass />} />
-            <Route path="/form" element={<Formcomponent />} />
+            <Route path="/form" element={<Formcomponent key={''} />} />
             <Route path="/*" element={<NAClass />} />
           </Routes>
         </BrowserRouter>
