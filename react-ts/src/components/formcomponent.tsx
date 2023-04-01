@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FormcardClass from './formcard';
 import HeaderClass from './header';
 import { Iformvalues } from './types/types';
 import { celebrities } from './PetsArr';
+import FormCardComponent from './formcard';
 
 function Formcomponent() {
   const [cur, setter] = useState<{ formValues: Iformvalues[] }>({ formValues: [] });
@@ -58,7 +58,7 @@ function Formcomponent() {
         <input name="result" type="file" ref={resultValue} />
         <button type="submit">Submit</button>
       </form>
-      <FormcardClass formValues={cur.formValues} />
+      <FormCardComponent formValues={cur.formValues} />
     </div>
   );
 }
