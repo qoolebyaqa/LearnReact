@@ -6,7 +6,6 @@ function SearchBar() {
   useEffect(() => {
     return () => {
       localStorage.setItem('searched', cur);
-      console.log(cur);
     };
   }, [cur]);
 

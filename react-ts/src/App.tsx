@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import HomeClass from 'components/home';
-import AboutClass from 'components/about';
-import NAClass from 'components/unknown';
 import Formcomponent from 'components/formcomponent';
+import AboutSection from 'components/about';
+import HomePage from 'components/home';
+import UnknownPage from 'components/unknown';
 
 function App() {
   return (
@@ -12,10 +12,10 @@ function App() {
       {
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomeClass />} />
-            <Route path="/about" element={<AboutClass />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutSection />} />
             <Route path="/form" element={<Formcomponent key={''} />} />
-            <Route path="/*" element={<NAClass />} />
+            <Route path="/*" element={<UnknownPage />} />
           </Routes>
         </BrowserRouter>
       }
