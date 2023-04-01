@@ -1,7 +1,7 @@
 import React from 'react';
-import PetClass from './card';
-import HeaderClass from './header';
-import SearchClass from './searchbar';
+import SearchBar from './searchbar';
+import PetCard from './card';
+import Header from './header';
 
 class HomeClass extends React.Component {
   constructor(prop: string) {
@@ -10,10 +10,10 @@ class HomeClass extends React.Component {
   render(): React.ReactNode {
     return (
       <div className="home__wrapper">
-        <HeaderClass />
+        <Header />
         <h2>Home</h2>
-        <SearchClass />
-        <PetClass />
+        <SearchBar />
+        <PetCard />
       </div>
     );
   }
