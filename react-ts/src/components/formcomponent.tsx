@@ -6,13 +6,15 @@ import FormCardComponent from './formcard';
 
 function Formcomponent() {
   const [cur, setter] = useState<{ formValues: Iformvalues[] }>({ formValues: [] });
+  const [imgSt, setImg] = useState<string>();
   const nameValue: React.RefObject<HTMLInputElement> = React.createRef();
   const placeValue: React.RefObject<HTMLInputElement> = React.createRef();
   const dateValue: React.RefObject<HTMLInputElement> = React.createRef();
   const doingValue: React.RefObject<HTMLSelectElement> = React.createRef();
   const confirmValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const resultValue: React.RefObject<HTMLInputElement> = React.createRef();
   const adviceValue: React.RefObject<HTMLInputElement> = React.createRef();
+  const resultImg: React.RefObject<HTMLInputElement> = React.createRef();
+  const fileReader = new FileReader();
 
   const toSubmit = (e: React.FormEvent) => {
     const Cperson: string = celebrities[Math.floor(Math.random() * celebrities.length)];
@@ -22,13 +24,37 @@ function Formcomponent() {
       doing: doingValue.current?.value,
       place: placeValue.current?.value,
       advice: adviceValue.current?.name,
-      result: resultValue.current?.value,
+      result: imgSt,
       person: Cperson,
     };
     e.preventDefault();
     const copyState: { formValues: Iformvalues[] } = Object.assign([], cur);
     copyState.formValues.push(objSubmit);
     setter(copyState);
+    if (
+      dateValue.current &&
+      nameValue.current &&
+      doingValue.current &&
+      placeValue.current &&
+      adviceValue.current &&
+      resultImg.current &&
+      confirmValue.current
+    ) {
+      dateValue.current.value = '';
+      nameValue.current.value = '';
+      doingValue.current.value = '';
+      placeValue.current.value = '';
+      adviceValue.current.checked = false;
+      resultImg.current.value = '';
+      confirmValue.current.checked = false;
+    }
+  };
+  fileReader.onloadend = () => {
+    setImg(fileReader.result as string);
+  };
+
+  const uploader = (sel: FileList | null) => {
+    sel ? fileReader.readAsDataURL(sel[0]) : '';
   };
   return (
     <div className="form__wrapper">
@@ -51,11 +77,18 @@ function Formcomponent() {
         <input required name="joke" type="checkbox" ref={confirmValue} />
         <label htmlFor="positive">What advice they received?</label>
         <div className="radio__container">
-          <input name="be positive" type="radio" ref={adviceValue} /> Be positive
+          <input name="be positive" type="radio" ref={adviceValue} defaultChecked={true} />
+          Be positive
           <input name="be negative" type="radio" ref={adviceValue} /> Be negative
         </div>
         <label htmlFor="result"></label>
-        <input name="result" type="file" ref={resultValue} />
+        <input
+          name="result"
+          type="file"
+          onChange={(e) => uploader((e.target as HTMLInputElement).files)}
+          accept=".png, .jpg"
+          ref={resultImg}
+        />
         <button type="submit">Submit</button>
       </form>
       <FormCardComponent formValues={cur.formValues} />
