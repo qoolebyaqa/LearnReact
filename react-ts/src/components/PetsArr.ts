@@ -106,6 +106,20 @@ export const petsArr: Ipet[] = [
   },
 ];
 
+export const celebrities: string[] = [
+  'Michael Jackson',
+  'Emma Watson',
+  'Justin Bieber',
+  'Dwayne Johnson',
+  'Michelle Obama',
+  'Ben Affleck',
+  'Cardi B',
+  'Christina Aguilera',
+  'Jessica Alba',
+  'Sophia Rotaru',
+  'Taylor Swift',
+  'Britney Spears',
+];
 export interface Ipet {
   name: string;
   img: string;
