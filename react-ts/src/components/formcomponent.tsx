@@ -5,7 +5,7 @@ import { Iformvalues } from './types/types';
 import { celebrities } from './PetsArr';
 
 function Formcomponent() {
-  const [cur, setter] = useState<Iformvalues[]>([]);
+  const [cur, setter] = useState<{ formValues: Iformvalues[] }>({ formValues: [] });
   const nameValue: React.RefObject<HTMLInputElement> = React.createRef();
   const placeValue: React.RefObject<HTMLInputElement> = React.createRef();
   const dateValue: React.RefObject<HTMLInputElement> = React.createRef();
@@ -25,10 +25,9 @@ function Formcomponent() {
       result: resultValue.current?.value,
       person: Cperson,
     };
-    console.log(objSubmit);
     e.preventDefault();
-    const copyState: Iformvalues[] = cur;
-    copyState.push(objSubmit);
+    const copyState: { formValues: Iformvalues[] } = Object.assign([], cur);
+    copyState.formValues.push(objSubmit);
     setter(copyState);
   };
   return (
@@ -59,7 +58,7 @@ function Formcomponent() {
         <input name="result" type="file" ref={resultValue} />
         <button type="submit">Submit</button>
       </form>
-      <FormcardClass formValues={cur} />
+      <FormcardClass formValues={cur.formValues} />
     </div>
   );
 }
