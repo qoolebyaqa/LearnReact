@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import HeaderClass from './header';
 import { Iformvalues } from './types/types';
-import { celebrities } from './PetsArr';
+import { celebrities } from './types/PetsArr';
 import FormCardComponent from './formcard';
+import PopupNotification from './popupNotification';
 
 function Formcomponent() {
-  const [cur, setter] = useState<{ formValues: Iformvalues[] }>({ formValues: [] });
+  const [cur, setter] = useState<{ formValues: Iformvalues[]; isOpen: boolean }>({
+    formValues: [],
+    isOpen: false,
+  });
   const [imgSt, setImg] = useState<string>();
   const nameValue: React.RefObject<HTMLInputElement> = React.createRef();
   const placeValue: React.RefObject<HTMLInputElement> = React.createRef();
@@ -23,14 +27,14 @@ function Formcomponent() {
       name: nameValue.current?.value,
       doing: doingValue.current?.value,
       place: placeValue.current?.value,
-      advice: adviceValue.current?.name,
+      advice: adviceValue.current?.id,
       result: imgSt,
       person: Cperson,
     };
     e.preventDefault();
     const copyState: { formValues: Iformvalues[] } = Object.assign([], cur);
     copyState.formValues.push(objSubmit);
-    setter(copyState);
+    setter({ formValues: copyState.formValues, isOpen: true });
     if (
       dateValue.current &&
       nameValue.current &&
@@ -48,11 +52,14 @@ function Formcomponent() {
       resultImg.current.value = '';
       confirmValue.current.checked = false;
     }
+    setter({ formValues: cur.formValues, isOpen: true });
   };
   fileReader.onloadend = () => {
     setImg(fileReader.result as string);
   };
-
+  const closeModal = () => {
+    setter({ formValues: cur.formValues, isOpen: false });
+  };
   const uploader = (sel: FileList | null) => {
     sel ? fileReader.readAsDataURL(sel[0]) : '';
   };
@@ -77,9 +84,16 @@ function Formcomponent() {
         <input required name="joke" type="checkbox" ref={confirmValue} />
         <label htmlFor="positive">What advice they received?</label>
         <div className="radio__container">
-          <input name="be positive" type="radio" ref={adviceValue} defaultChecked={true} />
+          <input
+            name="positive"
+            type="radio"
+            ref={adviceValue}
+            defaultChecked={true}
+            id="Be positive"
+          />
           Be positive
-          <input name="be negative" type="radio" ref={adviceValue} /> Be negative
+          <input name="positive" type="radio" ref={adviceValue} id="Be negative" />
+          Be negative
         </div>
         <label htmlFor="result"></label>
         <input
@@ -91,6 +105,18 @@ function Formcomponent() {
         />
         <button type="submit">Submit</button>
       </form>
+      {cur.formValues.length > 0 && cur.isOpen && (
+        <PopupNotification
+          date={cur.formValues[cur.formValues.length - 1].date}
+          name={cur.formValues[cur.formValues.length - 1].name}
+          doing={cur.formValues[cur.formValues.length - 1].doing}
+          place={cur.formValues[cur.formValues.length - 1].place}
+          advice={cur.formValues[cur.formValues.length - 1].advice}
+          result={cur.formValues[cur.formValues.length - 1].result}
+          modal={cur.isOpen}
+          functoClose={closeModal}
+        />
+      )}
       <FormCardComponent formValues={cur.formValues} />
     </div>
   );

@@ -5,5 +5,7 @@ export interface Iformvalues {
   place: string | undefined;
   advice: string | undefined;
   result?: string | undefined;
-  person: string | undefined;
+  person?: string | undefined;
+  modal?: boolean;
+  functoClose?: () => void;
 }

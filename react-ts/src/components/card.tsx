@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ipet, petsArr } from './PetsArr';
+import { Ipet, petsArr } from './types/PetsArr';
 
 function PetCard() {
   const arrPet: Ipet[] = petsArr;
