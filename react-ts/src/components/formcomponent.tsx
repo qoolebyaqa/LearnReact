@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import HeaderClass from './header';
 import { Iformvalues } from './types/types';
 import { celebrities } from './types/PetsArr';
@@ -11,13 +11,13 @@ function Formcomponent() {
     isOpen: false,
   });
   const [imgSt, setImg] = useState<string>();
-  const nameValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const placeValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const dateValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const doingValue: React.RefObject<HTMLSelectElement> = React.createRef();
-  const confirmValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const adviceValue: React.RefObject<HTMLInputElement> = React.createRef();
-  const resultImg: React.RefObject<HTMLInputElement> = React.createRef();
+  const nameValue = useRef<HTMLInputElement>(null);
+  const placeValue = useRef<HTMLInputElement>(null);
+  const dateValue = useRef<HTMLInputElement>(null);
+  const doingValue = useRef<HTMLSelectElement>(null);
+  const confirmValue = useRef<HTMLInputElement>(null);
+  const adviceValue = useRef<HTMLInputElement>(null);
+  const resultImg = useRef<HTMLInputElement>(null);
   const fileReader = new FileReader();
 
   const toSubmit = (e: React.FormEvent) => {
